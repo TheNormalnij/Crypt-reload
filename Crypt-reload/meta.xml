@@ -1,0 +1,31 @@
+<meta>
+    <info type="script" name="Crypt system" version="1.9" author="TheNormalnij" />
+    <min_mta_version server="1.5.5" client="1.5.5" />
+    <oop>true</oop>
+
+    <script src="core_client.lua" type="client" cache="false" />
+    <script src="core_server.lua" type="server" />
+
+    <script src="cryptMethod_shared.lua" type="shared" cache="false" />
+    <script src="cryptMethodTEA_shared.lua" type="shared" cache="false" />
+    <!-- <script src="cryptMethodAES_shared.lua" type="shared" cache="false" /> -->
+
+    <script src="admin_client.lua" type="client" cache="false" />
+    <script src="admin_server.lua" type="server" />
+
+    <script src="progressDrawer_client.lua" type="client" cache="false" />
+
+    <file src="images/error.png" />
+    <file src="images/info.png" />
+    <file src="images/warning.png" />
+    
+    <export function="load" type="client" />
+    
+    <aclrequest>
+        <right name="general.ModifyOtherObjects" access="true" />
+        <right name="function.fetchRemote" access="true" />
+        <right name="function.startResource" access="true" />
+        <right name="function.stopResource" access="true" />
+        <right name="function.refreshResources" access="true" />
+    </aclrequest>
+</meta>
