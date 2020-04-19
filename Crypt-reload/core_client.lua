@@ -89,11 +89,17 @@ function stackParsing( )
 					local fileDecryptionData = decryptionData[fileName]
 					
 					if fileDecryptionData then
-	
-						local file = File( filePrefix .. fileName )
-						local decryptedData = cryptMethods[ fileDecryptionData[1] ]:decrypt( file, unpack( fileDecryptionData, 2 ) )
-						local loadResul = loadMods[ task[2] ]( decryptedData, unpack( task, 3 ) )
-						file:close()
+						local loadResul
+						
+						if File.exists( filePrefix .. fileName ) then
+							local file = File( filePrefix .. fileName )
+							local decryptedData = cryptMethods[ fileDecryptionData[1] ]:decrypt( file, unpack( fileDecryptionData, 2 ) )
+							local loadResul = loadMods[ task[2] ]( decryptedData, unpack( task, 3 ) )
+							file:close()
+						else
+							outputDebugString( 'Ошибка открытия ' .. filePrefix .. fileName )
+							loadResul = false
+						end
 
 						if resource:getState() == 'running' then
 							if type( loadResul ) == 'userdata' and getUserdataType( loadResul ) == 'element' then
