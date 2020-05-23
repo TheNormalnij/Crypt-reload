@@ -94,7 +94,7 @@ function stackParsing( )
 						if File.exists( filePrefix .. fileName ) then
 							local file = File( filePrefix .. fileName )
 							local decryptedData = cryptMethods[ fileDecryptionData[1] ]:decrypt( file, unpack( fileDecryptionData, 2 ) )
-							local loadResul = loadMods[ task[2] ]( decryptedData, unpack( task, 3 ) )
+							loadResul = loadMods[ task[2] ]( decryptedData, unpack( task, 3 ) )
 							file:close()
 						else
 							outputDebugString( 'Ошибка открытия ' .. filePrefix .. fileName )
